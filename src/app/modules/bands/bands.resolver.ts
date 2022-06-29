@@ -10,18 +10,15 @@ export const bandsResolver = {
     },
   },
   Mutation: {
-    //   createBand(band: BandInput): Band
-    //     deleteBand(id: String!): Band
-    //     updateBand(id: String, band: BandInput): Band
     createBand: async (parent, args, { dataSources }) => {
       const { band } = args;
       return dataSources.bandsAPI.createBand(band);
     },
     updateBand: async (parent, args, { dataSources }) => {
-      return dataSources.bandsAPI.getBand(args.id);
+      return dataSources.bandsAPI.updateBand(args.id, args.band);
     },
     deleteBand: async (parent, args, { dataSources }) => {
-      return dataSources.bandsAPI.getBand(args.id);
+      return dataSources.bandsAPI.deleteBand(args.id);
     },
   },
 };

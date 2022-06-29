@@ -35,7 +35,7 @@ export const brandTypeDefs = gql`
 
   extend type Mutation {
     createBand(band: BandInput): Band
-    deleteBand(id: String!): Band
-    updateBand(id: String, band: BandInput): Band
+    deleteBand(id: String!): DeleteResult
+    updateBand(id: String!, band: BandInput!): Band
   }
 `;
