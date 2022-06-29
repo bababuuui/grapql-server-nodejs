@@ -1,9 +1,11 @@
-import { ApolloServer, gql } from "apollo-server";
+import { ApolloServer } from "apollo-server";
 import { UsersApiService } from "./modules/users/service/UsersApiService";
-import { IUserInput } from "./modules/users/interfaces/IUserInput";
 import { BandsApiService } from "./modules/bands/service/BandsApiService";
+import TYPE_DEFINITIONS from "./modules/common/typeDefMerger";
+import { RESOLVERS } from "./modules/common/resolversMerger";
 
 console.log(`start`);
+
 // QUERIES
 // artist
 // artists
@@ -23,92 +25,9 @@ console.log(`start`);
 // that together define the "shape" of queries that are executed against
 // your data.
 
-const books = [
-  {
-    title: "The Awakening",
-    author: "Kate Chopin",
-  },
-  {
-    title: "City of Glass",
-    author: "Paul Auster",
-  },
-];
-
-const resolvers = {
-  Query: {
-    books: () => books,
-    user: async (parent, args, { dataSources }) => {
-      return dataSources.usersAPI.getUser(args.id);
-    },
-    bands: async (parent, args, { dataSources }) => {
-      return dataSources.bandsAPI.getAllBands();
-    },
-    band: async (parent, args, { dataSources }) => {
-      return dataSources.bandsAPI.getBand(args.id);
-    },
-    // jwt: (parent, args, context) => context.token,
-  },
-
-  Mutation: {
-    login: async (parent, args, { dataSources }) => {
-      const userInput: IUserInput = args.credentials;
-      return dataSources.usersAPI.login(userInput);
-    },
-  },
-};
-
-const typeDefs = gql`
-  # Comments in GraphQL strings (such as this one) start with the hash (#) symbol.
-
-  # This "Book" type defines the queryable fields for every book in our data source.
-  type Book {
-    title: String
-    author: String
-  }
-  type User {
-    _id: ID!
-    firstName: String
-    lastName: String
-    password: String!
-    email: String!
-  }
-
-  type Member {
-    artist: String
-    instrument: String
-    years: [String]
-  }
-
-  type Band {
-    _id: ID!
-    name: String
-    origin: String
-    members: [Member]
-    website: String
-    genres: String
-  }
-
-  # The "Query" type is special: it lists all of the available queries that
-  # clients can execute, along with the return type for each. In this
-  # case, the "books" query returns an array of zero or more Books (defined above).
-  type Query {
-    books: [Book]
-    user(id: String!): User
-    bands: [Band]
-    band(id: String!): Band
-  }
-  input UserLoginInput {
-    email: String!
-    password: String!
-  }
-  type Mutation {
-    login(credentials: UserLoginInput): String!
-  }
-`;
-
 const server = new ApolloServer({
-  typeDefs,
-  resolvers,
+  typeDefs: TYPE_DEFINITIONS,
+  resolvers: RESOLVERS,
   dataSources: () => {
     return {
       usersAPI: new UsersApiService(),
