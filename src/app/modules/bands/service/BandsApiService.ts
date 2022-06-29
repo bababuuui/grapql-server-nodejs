@@ -1,7 +1,9 @@
 import { RESTDataSource } from "apollo-datasource-rest";
 import { IBand } from "../interfaces/IBand";
+import { IBandInput } from "../interfaces/IBandInput";
+import { BaseApiDataSource } from "../../common/BaseApiDataSource";
 
-export class BandsApiService extends RESTDataSource {
+export class BandsApiService extends BaseApiDataSource {
   constructor() {
     super();
     this.baseURL = "http://localhost:3003/v1/bands";
@@ -20,6 +22,16 @@ export class BandsApiService extends RESTDataSource {
   async getBand(id: string): Promise<IBand> | null {
     try {
       return await this.get(`${id}`);
+    } catch (e) {
+      console.error(e);
+    }
+    return null;
+  }
+
+  async createBand(band: IBandInput): Promise<IBand> | null {
+    try {
+      const response = await this.post(``, band);
+      return response;
     } catch (e) {
       console.error(e);
     }

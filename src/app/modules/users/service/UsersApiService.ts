@@ -1,8 +1,9 @@
 import { RESTDataSource } from "apollo-datasource-rest";
 import { IUserInput } from "../interfaces/IUserInput";
 import { IUser } from "../interfaces/IUser";
+import { BaseApiDataSource } from "../../common/BaseApiDataSource";
 
-export class UsersApiService extends RESTDataSource {
+export class UsersApiService extends BaseApiDataSource {
   constructor() {
     super();
     this.baseURL = "http://localhost:3004/v1/users";

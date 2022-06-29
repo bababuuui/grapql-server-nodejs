@@ -25,5 +25,7 @@ module.exports = {
     "no-console": "off",
     "import/prefer-default-export": "off",
     "import/extensions": "off",
+    "no-underscore-dangle": "off",
+    "class-methods-use-this": "off",
   },
 };

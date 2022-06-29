@@ -8,15 +8,34 @@ export const brandTypeDefs = gql`
   }
 
   type Band {
-    _id: ID!
+    id: ID!
     name: String
     origin: String
     members: [Member]
     website: String
     genres: String
   }
+
+  input MemberInput {
+    artist: String
+    instrument: String
+    years: [String]
+  }
+  input BandInput {
+    name: String
+    origin: String
+    members: [MemberInput]
+    website: String
+    genres: String
+  }
   extend type Query {
     bands: [Band]
     band(id: String!): Band
+  }
+
+  extend type Mutation {
+    createBand(band: BandInput): Band
+    deleteBand(id: String!): Band
+    updateBand(id: String, band: BandInput): Band
   }
 `;
