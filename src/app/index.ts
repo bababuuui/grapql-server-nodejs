@@ -3,6 +3,7 @@ import { UsersApiService } from "./modules/users/service/UsersApiService";
 import { BandsApiService } from "./modules/bands/service/BandsApiService";
 import TYPE_DEFINITIONS from "./modules/common/typeDefMerger";
 import { RESOLVERS } from "./modules/common/resolversMerger";
+import { GenresApiService } from "./modules/genres/service/GenresApiService";
 
 console.log(`start`);
 
@@ -24,6 +25,7 @@ console.log(`start`);
 // A schema is a collection of type definitions (hence "typeDefs")
 // that together define the "shape" of queries that are executed against
 // your data.
+// TODO rewrite login to jwt query
 
 const server = new ApolloServer({
   typeDefs: TYPE_DEFINITIONS,
@@ -32,6 +34,7 @@ const server = new ApolloServer({
     return {
       usersAPI: new UsersApiService(),
       bandsAPI: new BandsApiService(),
+      genresAPI: new GenresApiService(),
     };
   },
   context: (expressContext) => {

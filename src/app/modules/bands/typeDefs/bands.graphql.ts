@@ -13,7 +13,7 @@ export const brandTypeDefs = gql`
     origin: String
     members: [Member]
     website: String
-    genres: String
+    genres: [Genre]
   }
 
   input MemberInput {
