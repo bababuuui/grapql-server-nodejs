@@ -14,9 +14,6 @@ export const userTypeDefs = gql`
   }
   extend type Query {
     user(id: String!): User
-  }
-
-  extend type Mutation {
-    login(credentials: UserLoginInput): String!
+    jwt(credentials: UserLoginInput): String!
   }
 `;

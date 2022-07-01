@@ -5,10 +5,7 @@ export const usersResolver = {
     user: async (parent, args, { dataSources }) => {
       return dataSources.usersAPI.getUser(args.id);
     },
-  },
-
-  Mutation: {
-    login: async (parent, args, { dataSources }) => {
+    jwt: async (parent, args, { dataSources }) => {
       const userInput: IUserInput = args.credentials;
       return dataSources.usersAPI.login(userInput);
     },
