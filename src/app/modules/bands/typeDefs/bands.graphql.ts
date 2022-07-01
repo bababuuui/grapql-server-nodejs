@@ -26,7 +26,7 @@ export const brandTypeDefs = gql`
     origin: String
     members: [MemberInput]
     website: String
-    genres: String
+    genresIds: [ID]
   }
   extend type Query {
     bands: [Band]

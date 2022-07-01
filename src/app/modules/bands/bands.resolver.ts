@@ -21,4 +21,18 @@ export const bandsResolver = {
       return dataSources.bandsAPI.deleteBand(args.id);
     },
   },
+
+  Band: {
+    genres: async (parent, args, { dataSources }) => {
+      const { genresIds }: { genresIds: string[] } = parent;
+      const result = [];
+      if (parent && genresIds.length > 0) {
+        for (const genreId of genresIds) {
+          result.push(dataSources.genresAPI.getGenre(genreId));
+        }
+        return result;
+      }
+      return result;
+    },
+  },
 };

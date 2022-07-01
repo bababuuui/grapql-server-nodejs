@@ -9,9 +9,11 @@ export class BaseApiDataSource extends RESTDataSource {
     const data = await res.json();
     if (res.ok) {
       data.id = data._id;
+      delete data._id;
       if (data.items) {
         for (const item of data.items) {
           item.id = item._id;
+          delete item._id;
         }
       }
     }
