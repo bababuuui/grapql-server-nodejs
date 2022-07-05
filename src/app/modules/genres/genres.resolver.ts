@@ -1,7 +1,8 @@
 export const genresResolver = {
   Query: {
     genres: async (parent, args, { dataSources }) => {
-      return dataSources.genresAPI.getAllGenres();
+      const { offset, limit } = args;
+      return dataSources.genresAPI.getAllGenres(offset, limit);
     },
     genre: async (parent, args, { dataSources }) => {
       return dataSources.genresAPI.getGenre(args.id);

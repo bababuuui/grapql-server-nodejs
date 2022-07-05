@@ -1,7 +1,8 @@
 export const artistsResolver = {
   Query: {
     artists: async (parent, args, { dataSources }) => {
-      return dataSources.artistsAPI.getAllArtists();
+      const { offset, limit } = args;
+      return dataSources.artistsAPI.getAllArtists(offset, limit);
     },
     artist: async (parent, args, { dataSources }) => {
       return dataSources.artistsAPI.getArtist(args.id);

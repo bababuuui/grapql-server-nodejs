@@ -3,7 +3,8 @@ import { IBand } from "./interfaces/IBand";
 export const bandsResolver = {
   Query: {
     bands: async (parent, args, { dataSources }) => {
-      return dataSources.bandsAPI.getAllBands();
+      const { offset, limit } = args;
+      return dataSources.bandsAPI.getAllBands(offset, limit);
     },
     band: async (parent, args, { dataSources }) => {
       return dataSources.bandsAPI.getBand(args.id);

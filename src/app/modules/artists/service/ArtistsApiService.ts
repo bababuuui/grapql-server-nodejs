@@ -3,6 +3,7 @@ import { IArtist } from "../interfaces/IArtist";
 import { IArtistInput } from "../interfaces/IArtistInput";
 import { BaseApiDataSource } from "../../common/BaseApiDataSource";
 import { IDeleteResult } from "../../common/interfaces/IDeleteResult";
+import { DEFAULT_LIMIT, DEFAULT_OFFSET } from "../../../constants/pagination";
 
 export class ArtistsApiService extends BaseApiDataSource {
   constructor() {
@@ -10,9 +11,9 @@ export class ArtistsApiService extends BaseApiDataSource {
     this.baseURL = "http://localhost:3002/v1/artists";
   }
 
-  async getAllArtists(): Promise<IArtist[]> | null {
+  async getAllArtists(offset: number = DEFAULT_OFFSET, limit: number = DEFAULT_LIMIT): Promise<IArtist[]> | null {
     try {
-      const response = await this.get(``);
+      const response = await this.get(``, { offset, limit });
       return response.items;
     } catch (e) {
       console.error(e);

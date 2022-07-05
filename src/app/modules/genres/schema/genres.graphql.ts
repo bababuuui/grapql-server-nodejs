@@ -16,7 +16,7 @@ export const genreTypeDef = gql`
   }
 
   extend type Query {
-    genres: [Genre]
+    genres(offset: Int, limit: Int): [Genre]
     genre(id: String!): Genre
   }
 

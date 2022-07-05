@@ -29,7 +29,7 @@ export const brandTypeDefs = gql`
     genresIds: [ID]
   }
   extend type Query {
-    bands: [Band]
+    bands(offset: Int, limit: Int): [Band]
     band(id: String!): Band
   }
 

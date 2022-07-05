@@ -3,6 +3,7 @@ import { IBand } from "../interfaces/IBand";
 import { IBandInput } from "../interfaces/IBandInput";
 import { BaseApiDataSource } from "../../common/BaseApiDataSource";
 import { IDeleteResult } from "../../common/interfaces/IDeleteResult";
+import { DEFAULT_LIMIT, DEFAULT_OFFSET } from "../../../constants/pagination";
 
 export class BandsApiService extends BaseApiDataSource {
   constructor() {
@@ -10,9 +11,9 @@ export class BandsApiService extends BaseApiDataSource {
     this.baseURL = "http://localhost:3003/v1/bands";
   }
 
-  async getAllBands(): Promise<IBand[]> | null {
+  async getAllBands(offset: number = DEFAULT_OFFSET, limit: number = DEFAULT_LIMIT): Promise<IBand[]> | null {
     try {
-      const response = await this.get(``);
+      const response = await this.get(``, { offset, limit });
       return response.items;
     } catch (e) {
       console.error(e);

@@ -2,6 +2,7 @@ import { IGenre } from "../interfaces/IGenre";
 import { IGenreInput } from "../interfaces/IGenreInput";
 import { BaseApiDataSource } from "../../common/BaseApiDataSource";
 import { IDeleteResult } from "../../common/interfaces/IDeleteResult";
+import { DEFAULT_LIMIT, DEFAULT_OFFSET } from "../../../constants/pagination";
 
 export class GenresApiService extends BaseApiDataSource {
   constructor() {
@@ -9,9 +10,9 @@ export class GenresApiService extends BaseApiDataSource {
     this.baseURL = "http://localhost:3001/v1/genres";
   }
 
-  async getAllGenres(): Promise<IGenre[]> | null {
+  async getAllGenres(offset: number = DEFAULT_OFFSET, limit: number = DEFAULT_LIMIT): Promise<IGenre[]> | null {
     try {
-      const response = await this.get(``);
+      const response = await this.get(``, { offset, limit });
       return response.items;
     } catch (e) {
       console.error(e);

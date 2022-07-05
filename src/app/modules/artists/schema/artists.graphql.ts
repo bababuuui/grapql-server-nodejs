@@ -24,7 +24,7 @@ export const artistsTypeDefs = gql`
     instruments: [String]
   }
   extend type Query {
-    artists: [Artist]
+    artists(offset: Int, limit: Int): [Artist]
     artist(id: String!): Artist
   }
 
