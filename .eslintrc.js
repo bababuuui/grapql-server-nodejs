@@ -27,5 +27,6 @@ module.exports = {
     "import/extensions": "off",
     "no-underscore-dangle": "off",
     "class-methods-use-this": "off",
+    "no-restricted-syntax": "off",
   },
 };

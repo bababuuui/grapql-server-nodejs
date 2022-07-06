@@ -31,7 +31,6 @@ export const bandsResolver = {
         for (const genreId of genresIds) {
           result.push(dataSources.genresAPI.getGenre(genreId));
         }
-        return result;
       }
       return result;
     },
