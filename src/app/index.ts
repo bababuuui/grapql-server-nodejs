@@ -7,6 +7,7 @@ import { GenresApiService } from "./modules/genres/service/GenresApiService";
 import { ArtistsApiService } from "./modules/artists/service/ArtistsApiService";
 import { TracksApiService } from "./modules/tracks/service/TracksApiService";
 import { AlbumsApiService } from "./modules/albums/service/AlbumsApiService";
+import { FavouritesApiService } from "./modules/favourites/service/FavouritesApiService";
 
 console.log(`start`);
 
@@ -42,6 +43,7 @@ const server = new ApolloServer({
       artistsAPI: new ArtistsApiService(),
       tracksAPI: new TracksApiService(),
       albumsAPI: new AlbumsApiService(),
+      favouritesAPI: new FavouritesApiService(),
     };
   },
   context: (expressContext) => {
