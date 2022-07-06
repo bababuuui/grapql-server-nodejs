@@ -1,4 +1,5 @@
-import { IUserInput } from "./interfaces/IUserInput";
+import { IUserLoginInput } from "./interfaces/IUserLoginInput";
+import { IUserRegisterInput } from "./interfaces/IUserRegisterInput";
 
 export const usersResolver = {
   Query: {
@@ -6,8 +7,14 @@ export const usersResolver = {
       return dataSources.usersAPI.getUser(args.id);
     },
     jwt: async (parent, args, { dataSources }) => {
-      const userInput: IUserInput = args.credentials;
+      const userInput: IUserLoginInput = args.credentials;
       return dataSources.usersAPI.login(userInput);
+    },
+  },
+  Mutation: {
+    register: async (parent, args, { dataSources }) => {
+      const userInput: IUserRegisterInput = args.user;
+      return dataSources.usersAPI.register(userInput);
     },
   },
 };

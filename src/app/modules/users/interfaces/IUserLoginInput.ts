@@ -1,4 +1,4 @@
-export interface IUserInput {
+export interface IUserLoginInput {
   password: string;
   email: string;
 }
