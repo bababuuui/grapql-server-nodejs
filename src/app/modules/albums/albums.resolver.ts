@@ -42,16 +42,7 @@ export const albumsResolver = {
       }
       return result;
     },
-    tracks: async (parent, args, { dataSources }) => {
-      const { trackIds }: { trackIds: string[] } = parent;
-      const result = [];
-      if (parent && trackIds.length > 0) {
-        for (const trackId of trackIds) {
-          result.push(dataSources.tracksAPI.getTrack(trackIds));
-        }
-      }
-      return result;
-    },
+
     genres: async (parent, args, { dataSources }) => {
       const { genresIds }: { genresIds: string[] } = parent;
       const result = [];

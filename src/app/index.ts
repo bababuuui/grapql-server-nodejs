@@ -12,28 +12,8 @@ import "dotenv/config";
 
 console.log(`start`);
 
-// QUERIES
-// artist
-// artists
-// genre
-// genres
-// track
-// tracks
-// band
-// bands -done
-// album
-// albums
-// jwt ??????
-// user - done
-// favourites (available only for logged in user)
-
-// A schema is a collection of type definitions (hence "typeDefs")
-// that together define the "shape" of queries that are executed against
-// your data.
 // TODO eslint errors
-// TODO ENV endpoints
 // TODO chains? ? ? ?
-// TODO members?
 // todo readme
 
 const server = new ApolloServer({
