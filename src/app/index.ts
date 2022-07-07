@@ -8,6 +8,7 @@ import { ArtistsApiService } from "./modules/artists/service/ArtistsApiService";
 import { TracksApiService } from "./modules/tracks/service/TracksApiService";
 import { AlbumsApiService } from "./modules/albums/service/AlbumsApiService";
 import { FavouritesApiService } from "./modules/favourites/service/FavouritesApiService";
+import "dotenv/config";
 
 console.log(`start`);
 
@@ -31,6 +32,9 @@ console.log(`start`);
 // your data.
 // TODO eslint errors
 // TODO ENV endpoints
+// TODO chains? ? ? ?
+// TODO members?
+// todo readme
 
 const server = new ApolloServer({
   typeDefs: TYPE_DEFINITIONS,

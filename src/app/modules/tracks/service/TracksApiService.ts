@@ -8,7 +8,7 @@ import { ITrackInput } from "../interfaces/ITrackInput";
 export class TracksApiService extends BaseApiDataSource {
   constructor() {
     super();
-    this.baseURL = "http://localhost:3006/v1/tracks";
+    this.baseURL = process.env.TRACKS_API_URL;
   }
 
   async getAllTracks(offset: number = DEFAULT_OFFSET, limit: number = DEFAULT_LIMIT): Promise<ITrack[]> | null {

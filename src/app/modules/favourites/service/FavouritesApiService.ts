@@ -4,7 +4,7 @@ import { IFavourite } from "../interfaces/IFavourite";
 export class FavouritesApiService extends BaseApiDataSource {
   constructor() {
     super();
-    this.baseURL = "http://localhost:3007/v1/favourites";
+    this.baseURL = process.env.FAVOURITES_API_URL;
   }
 
   async getAllFavourites(): Promise<IFavourite[]> | null {

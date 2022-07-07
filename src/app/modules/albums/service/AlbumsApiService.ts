@@ -8,7 +8,7 @@ import { DEFAULT_LIMIT, DEFAULT_OFFSET } from "../../../constants/pagination";
 export class AlbumsApiService extends BaseApiDataSource {
   constructor() {
     super();
-    this.baseURL = "http://localhost:3005/v1/albums";
+    this.baseURL = process.env.ALBUMS_API_URL;
   }
 
   async getAllAlbums(offset: number = DEFAULT_OFFSET, limit: number = DEFAULT_LIMIT): Promise<IAlbum[]> | null {

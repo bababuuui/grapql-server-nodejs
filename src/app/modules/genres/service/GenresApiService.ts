@@ -7,7 +7,7 @@ import { DEFAULT_LIMIT, DEFAULT_OFFSET } from "../../../constants/pagination";
 export class GenresApiService extends BaseApiDataSource {
   constructor() {
     super();
-    this.baseURL = "http://localhost:3001/v1/genres";
+    this.baseURL = process.env.GENRES_API_URL;
   }
 
   async getAllGenres(offset: number = DEFAULT_OFFSET, limit: number = DEFAULT_LIMIT): Promise<IGenre[]> | null {

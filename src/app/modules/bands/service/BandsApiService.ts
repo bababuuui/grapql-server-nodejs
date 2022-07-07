@@ -8,7 +8,7 @@ import { DEFAULT_LIMIT, DEFAULT_OFFSET } from "../../../constants/pagination";
 export class BandsApiService extends BaseApiDataSource {
   constructor() {
     super();
-    this.baseURL = "http://localhost:3003/v1/bands";
+    this.baseURL = process.env.BANDS_API_URL;
   }
 
   async getAllBands(offset: number = DEFAULT_OFFSET, limit: number = DEFAULT_LIMIT): Promise<IBand[]> | null {

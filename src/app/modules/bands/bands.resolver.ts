@@ -1,4 +1,5 @@
 import { IBand } from "./interfaces/IBand";
+import { IMember } from "./interfaces/IMember";
 
 export const bandsResolver = {
   Query: {
@@ -30,6 +31,17 @@ export const bandsResolver = {
       if (parent && genresIds.length > 0) {
         for (const genreId of genresIds) {
           result.push(dataSources.genresAPI.getGenre(genreId));
+        }
+      }
+      return result;
+    },
+    members: async (parent, args, { dataSources }) => {
+      const { members }: { members: IMember[] } = parent;
+      const result = [];
+      if (parent && members.length > 0) {
+        for (const member of members) {
+          const artist = await dataSources.artistsAPI.getArtist(member.artist);
+          result.push({ artist, instrument: member.instrument, years: member.years });
         }
       }
       return result;

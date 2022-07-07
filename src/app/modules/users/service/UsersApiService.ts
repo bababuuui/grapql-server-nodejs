@@ -7,7 +7,7 @@ import { IUserRegisterInput } from "../interfaces/IUserRegisterInput";
 export class UsersApiService extends BaseApiDataSource {
   constructor() {
     super();
-    this.baseURL = "http://localhost:3004/v1/users";
+    this.baseURL = process.env.USERS_API_URL;
   }
 
   async login(userInput: IUserLoginInput): Promise<string> {
