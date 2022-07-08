@@ -28,5 +28,6 @@ module.exports = {
     "no-underscore-dangle": "off",
     "class-methods-use-this": "off",
     "no-restricted-syntax": "off",
+    "no-await-in-loop": "off",
   },
 };

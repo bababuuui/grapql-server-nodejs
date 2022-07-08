@@ -2,7 +2,13 @@ import { gql } from "apollo-server";
 
 export const brandTypeDefs = gql`
   type Member {
-    artist: Artist
+    id: ID
+    firstName: String
+    secondName: String
+    middleName: String
+    birthDate: String
+    birthPlace: String
+    country: String
     instrument: String
     years: [String]
   }

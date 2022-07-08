@@ -40,10 +40,12 @@ export const bandsResolver = {
       const result = [];
       if (parent && members.length > 0) {
         for (const member of members) {
-          const artist = dataSources.artistsAPI.getArtist(member.artist);
-          result.push({ artist, instrument: member.instrument, years: member.years });
+          const artist = await dataSources.artistsAPI.getArtist(member.artist);
+          console.log(artist);
+          result.push({ ...artist, instrument: member.instrument, years: member.years });
         }
       }
+      console.log(result);
       return result;
     },
   },
